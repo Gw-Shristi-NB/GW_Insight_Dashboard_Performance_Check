@@ -28,11 +28,11 @@ export const environments: Record<EnvName, { url: string; accounts: Account[] }>
     url: 'https://live03.guardware.com.au/ss4/webadmin/login',
     accounts: [
       
-      // { username: 'gw_admin_qr', password: 'In$1ghtQR!Q@W', requiresAuth: true },
-      // { username: 'gw_admin_nhn', password: 'In$1ghtNHN!Q@W', requiresAuth: true },
-      // { username: 'gw_admin_RA', password: 'In$1ghtRA!Q@W#E', requiresAuth: true },
-      // { username: 'gw_admin_Adora', password: 'In$1ghtADORA!Q@W#E', requiresAuth: true },
-      { username: 'gw_admin_THCFA', password: 'In$1ghtTHCFA!Q@W', requiresAuth: true }
+      { username: 'gw_admin_qr', password: 'In$1ghtQR!Q@W', requiresAuth: true },
+      { username: 'gw_admin_nhn', password: 'In$1ghtNHN!Q@W', requiresAuth: true },
+      { username: 'gw_admin_THCFA', password: 'In$1ghtTHCFA!Q@W', requiresAuth: true },
+      { username: 'gw_admin_RA', password: 'In$1ghtRA!Q@W#E', requiresAuth: true },
+      { username: 'gw_admin_Adora', password: 'In$1ghtADORA!Q@W#E', requiresAuth: true },
 
     ],
   },
