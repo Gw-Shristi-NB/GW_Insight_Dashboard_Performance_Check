@@ -23,15 +23,15 @@ export const secrets: Record<string, string> = {
   gw_admin_nhn: 'GHX7PMUBMNLYJXFE',
 
 
-  gw_admin_ksbbl: '4KCA3CAE3RKTI4KS',
+  gw_admin_ksbbl: 'BLOMTOPXKMEM2OJV',
+  'e-safe_Admin_ilo': 'BSK5MMIWYSZCCUS4',
   gw_admin_ConektIT: '4MRLPEC5DDWMV4RD',
   gw_admin_Age: 'R5TLLZW5VEVXERTN',
-  'rizwan@e-safesystems.com': 'PLAAJIIMCV7RGD5U',
-  
+  'rizwan@e-safesystems.com': 'AW4VXUOUPKIFYTJQ',
+  gw_admin_exigotech: 'HMOYQDZUXFSJAZYG',
 
 
-  'e-safe_Admin_Bathurst': 'MAEH3ZBTVAJVJD7X',
-  'e-safe_Admin_Rosebank': 'ECSGEUE4QQPCGXMK',
+
   gw_admin_ctc: 'QEOCMINCJB2NBZEK',
   gw_admin_boomrang: 'BXSWJSD2LSNOQEEI',
   gw_admin_plasmal: '2UCBFUN7K6U2WRQR',
@@ -41,6 +41,8 @@ export const secrets: Record<string, string> = {
   'e-safe_Admin_UFU': 'KQ4KJQTFOV5LMXU7',
   gw_admin_qit: 'JBZOD3K2OPXTOSQM',
   gw_admin_powerearth: 'TWNQ2PUG7ITAFWPV',
+  'e-safe_Admin_Bathurst': 'MAEH3ZBTVAJVJD7X',
+  'e-safe_Admin_Rosebank': 'ECSGEUE4QQPCGXMK',
 
 
 
