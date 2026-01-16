@@ -1,4 +1,5 @@
-import { test } from '@playwright/test';
+
+import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/login.page';
 import fs from 'fs';
 import { environments, EnvName } from '../environments';
@@ -10,7 +11,7 @@ import {
 } from './dashboard-locators';
 import { generateOTP } from './secrets';
 
-const envName: EnvName = (process.env.ENV ?? 'live02') as EnvName;
+const envName: EnvName = (process.env.ENV ?? 'live05') as EnvName;
 const env = environments[envName];
 
 const logFile = `${envName}_dashboard_log.txt`;
@@ -25,8 +26,7 @@ test.describe(`Dashboard load tests for ${envName}`, () => {
             test.setTimeout(1_000_000);
 
             let report = `\n\n===============================================================\n`;
-            report += ` Dashboard Performance - ${envName}\n`;
-            report += ` USER: ${account.username}\n`;
+            report += ` Dashboard Performance - ${envName} - USER: ${account.username}\n`;
             report += `===============================================================\n`;
 
             const dashboards = [
@@ -48,55 +48,21 @@ test.describe(`Dashboard load tests for ${envName}`, () => {
             }
 
             /* -------------------------------------------------------------
-               LOGIN (PER ACCOUNT ERROR SAFE)
+               FIRST DASHBOARD – PAGE STABILITY ONLY (NO WIDGET CHECK)
             ------------------------------------------------------------- */
-            async function performLogin(): Promise<boolean> {
-                const loginPage = new LoginPage(page);
-
-                try {
-                    await page.goto(env.url);
-                    await loginPage.login(account.username, account.password);
-
-                    if (account.requiresAuth) {
-                        const otpInput = page.locator('//input[@id="code"]');
-                        await otpInput.waitFor({ state: 'visible', timeout: 10_000 });
-                        await otpInput.fill(generateOTP(account.username));
-                        await page.click('//button[@type="submit"]');
-                    }
-
-                    // Successful login indicator
-                    await page.waitForSelector(
-                        '//a[@class="nav-link dropdown-toggle"]',
-                        { timeout: 30_000 }
-                    );
-
-                    return true;
-
-                } catch (error: any) {
-                    report += `
-❌ LOGIN FAILED
----------------------------------------------------------------
-User   : ${account.username}
-Reason : ${error.message}
----------------------------------------------------------------
-`;
-                    return false;
-                }
-            }
-
-            /* -------------------------------------------------------------
-               FIRST DASHBOARD STABILITY
-            ------------------------------------------------------------- */
-            async function openFirstDashboard() {
+            async function openFirstDashboard(page: any) {
                 const firstDash = dashboards[0];
 
+                // Click first dashboard tab
                 await page.click(firstDash.tabSelector);
 
+                // Dashboard container visible
                 await page.waitForSelector(
                     '//div[contains(@class,"dashboard") or contains(@id,"dashboard")]',
                     { state: 'visible', timeout: 180_000 }
                 );
 
+                // Wait for loaders to disappear
                 const loaders = [
                     '//div[contains(@class,"spinner")]',
                     '//div[contains(@class,"loading")]',
@@ -111,63 +77,86 @@ Reason : ${error.message}
                     }).catch(() => {});
                 }
 
+                // Network idle (all API calls finished)
                 await page.waitForLoadState('networkidle', {
                     timeout: 180_000
                 });
 
+                // Small safety buffer
                 await page.waitForTimeout(1000);
             }
 
             /* -------------------------------------------------------------
-               SET DATE RANGE
+               SET DATE RANGE AFTER FIRST DASHBOARD PAGE IS READY
             ------------------------------------------------------------- */
-            async function setupSearchForLatestMonth() {
-                await openFirstDashboard();
+            async function setupSearchForLatestMonth(page: any) {
 
+                // Ensure first dashboard page is fully stable
+                await openFirstDashboard(page);
+
+                // Open dropdown
                 const dropdown = '//a[@class="nav-link dropdown-toggle"]';
-                await page.waitForSelector(dropdown, { timeout: 30_000 });
+                await page.waitForSelector(dropdown, {
+                    state: 'visible',
+                    timeout: 30_000
+                });
                 await page.click(dropdown);
 
+                // Click All Dashboard
                 const allDashboardItem =
                     '//a[.//i[contains(@class,"lnr-laptop")] and contains(.,"All Dashboard")]';
-                await page.waitForSelector(allDashboardItem, { timeout: 30_000 });
+
+                await page.waitForSelector(allDashboardItem, {
+                    state: 'visible',
+                    timeout: 30_000
+                });
                 await page.click(allDashboardItem);
 
+                // Open date filter
                 const searchIcon = '//i[contains(@class,"lnr-magnifier")]';
-                await page.waitForSelector(searchIcon, { timeout: 20_000 });
+                await page.waitForSelector(searchIcon, {
+                    state: 'visible',
+                    timeout: 20_000
+                });
                 await page.click(searchIcon);
 
+                // Date inputs
                 const startInput = page.locator('(//input[@class="form-control"])[1]');
                 const endInput = page.locator('(//input[@class="form-control"])[2]');
 
-                await startInput.waitFor({ timeout: 20_000 });
-                await endInput.waitFor({ timeout: 20_000 });
+                await startInput.waitFor({ state: 'visible', timeout: 20_000 });
+                await endInput.waitFor({ state: 'visible', timeout: 20_000 });
 
                 const today = new Date();
                 const last30Days = new Date(today);
                 last30Days.setDate(today.getDate() - 30);
 
+                // Start date
                 await startInput.click();
                 await page.click('//button[contains(@class,"react-datepicker__navigation--previous")]');
                 await page.click(
                     `//div[contains(@class,"react-datepicker__day") and not(contains(@class,"outside-month")) and text()="${last30Days.getDate()}"]`
                 );
 
+                // End date
                 await endInput.click();
                 await page.click(
                     `//div[contains(@class,"react-datepicker__day") and not(contains(@class,"outside-month")) and text()="${today.getDate()}"]`
                 );
 
+                // Apply
                 await page.click('//button[@class="btn btn-success w-100"]');
             }
 
             /* -------------------------------------------------------------
-               LOAD DASHBOARD
+               LOAD DASHBOARD & MEASURE WIDGET TIME
             ------------------------------------------------------------- */
             async function loadDashboard(
+                page: any,
                 name: string,
                 tabSelector: string,
-                widgets: any[]
+                widgets: any[],
+                report: string
             ) {
                 const longestName = Math.max(...widgets.map(w => w.name.length));
                 const nameColWidth = Math.max(longestName + 2, 40);
@@ -192,42 +181,51 @@ Reason : ${error.message}
                             timeout: WIDGET_TIMEOUT
                         });
 
-                        report += `| ${widget.name.padEnd(nameColWidth)} | ${formatTime(Date.now() - widgetStart)} |\n`;
+                        const elapsed = Date.now() - widgetStart;
+                        report += `| ${widget.name.padEnd(nameColWidth)} | ${formatTime(elapsed)} |\n`;
                     } catch {
-                        report += `| ${widget.name.padEnd(nameColWidth)} | Still Loading |\n`;
+                        const waited = Date.now() - widgetStart;
+                        report += `| ${widget.name.padEnd(nameColWidth)} | Still Loading after ${formatTime(waited)} |\n`;
                     }
                 }
 
+                const totalTime = Date.now() - dashboardStart;
                 report += `${divider}\n`;
-                report += `${name} Total Load Time: ${formatTime(Date.now() - dashboardStart)}\n`;
+                report += `${name} Total Load Time: ${formatTime(totalTime)}\n\n`;
+
+                return report;
             }
 
             /* -------------------------------------------------------------
-               EXECUTION FLOW
+               TEST EXECUTION
             ------------------------------------------------------------- */
+            try {
+                const loginPage = new LoginPage(page);
 
-            const loggedIn = await performLogin();
+                await page.goto(env.url);
+                await loginPage.login(account.username, account.password);
 
-            if (loggedIn) {
-                try {
-                    await setupSearchForLatestMonth();
-
-                    for (const dash of dashboards) {
-                        await loadDashboard(
-                            dash.name,
-                            dash.tabSelector,
-                            dash.widgets
-                        );
-                    }
-                } catch (error: any) {
-                    report += `
-❌ DASHBOARD ERROR
----------------------------------------------------------------
-User   : ${account.username}
-Reason : ${error.message}
----------------------------------------------------------------
-`;
+                if (account.requiresAuth) {
+                    const otpInput = page.locator('//input[@id="code"]');
+                    await otpInput.waitFor({ state: 'visible', timeout: 10_000 });
+                    await otpInput.fill(generateOTP(account.username));
+                    await page.click('//button[@type="submit"]');
                 }
+
+                await setupSearchForLatestMonth(page);
+
+                for (const dash of dashboards) {
+                    report = await loadDashboard(
+                        page,
+                        dash.name,
+                        dash.tabSelector,
+                        dash.widgets,
+                        report
+                    );
+                }
+
+            } catch (error: any) {
+                report += `\n❌ ERROR FOR USER ${account.username}: ${error.message}\n`;
             }
 
             fs.appendFileSync(logFile, report);
