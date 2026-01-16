@@ -1,6 +1,5 @@
 
 node_modules/
-test/live02_performance.spec.ts
 live01_dashboard_log.txt
 live02_dashboard_log.txt
 live03_dashboard_log.txt

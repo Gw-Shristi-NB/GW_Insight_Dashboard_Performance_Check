@@ -10,7 +10,7 @@ import {
 } from './dashboard-locators';
 import { generateOTP } from './secrets';
 
-const envName: EnvName = (process.env.ENV ?? 'live03') as EnvName;
+const envName: EnvName = (process.env.ENV ?? 'live02') as EnvName;
 const env = environments[envName];
 
 const logFile = `${envName}_dashboard_log.txt`;
