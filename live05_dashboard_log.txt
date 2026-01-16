@@ -1,0 +1,230 @@
+
+
+===============================================================
+ Dashboard Performance - live05 - USER: e-safe_Admin_Bathurst
+===============================================================
+
+Risk Summary Dashboard
+-----------------------------------------------------------------------------------------
+| Widget Name                                               | Load Time |
+-----------------------------------------------------------------------------------------
+| Internal SharePoint Events                                | 13.21s |
+| External SharePoint Events                                | 0.07s |
+| Email Activities                                          | 0.27s |
+| Data Transfer using Non-Corporate Websites                | 0.16s |
+| File Uploads to Non-Corporate File Sharing Applications   | 3.48s |
+| Storage Device Risk                                       | 0.14s |
+| Printing Incidents                                        | 0.24s |
+| Access of Documents on Local Devices                      | 0.89s |
+| Key Stroke Capture of Monitored Phrases                   | 0.03s |
+| Usage Of AI Tools                                         | 0.13s |
+| Usage of Non-Corporate Websites                           | 0.13s |
+| Usage of Non-Corporate Applications                       | 0.01s |
+-----------------------------------------------------------------------------------------
+Risk Summary Dashboard Total Load Time: 18.74s
+
+
+General Dashboard
+--------------------------------------------------------------------------------
+| Widget Name                                      | Load Time |
+--------------------------------------------------------------------------------
+| Application Transfers                            | 2.60s |
+| Printed Files                                    | 0.26s |
+| Emailing of attachments from any email address   | 0.02s |
+| Website Incidents                                | 0.02s |
+| Email Body                                       | 0.03s |
+| Website Text                                     | 0.24s |
+| Storage Transfers                                | 0.01s |
+| Keystrokes                                       | 0.23s |
+| Document Views                                   | 0.36s |
+--------------------------------------------------------------------------------
+General Dashboard Total Load Time: 3.77s
+
+
+Risk Dashboard
+--------------------------------------------------------------------------------------------------------------------------
+| Widget Name                                                                                | Load Time |
+--------------------------------------------------------------------------------------------------------------------------
+| Storage Transfer Summary                                                                   | 3.09s |
+| Keystrokes Summary                                                                         | 0.04s |
+| Use of Monitored Non-Organisational Applications                                           | 0.03s |
+| Use of Monitored Non-Organisational Websites                                               | 0.02s |
+| Use of Non-Corporate OneDrive Folders                                                      | 0.89s |
+| Uploading of files via Non-Corporate Cloud or File Sharing Application                     | 2.00s |
+| Printing files using non-corporate printers                                                | 0.04s |
+| Uploads of data to Non-Corporate Websites                                                  | 0.05s |
+| Emailing of attachments from any email address                                             | 0.27s |
+| Emailing of attachments from Corporate Email Address to Non-Corporate Email Address        | 0.40s |
+| Emailing of attachments from Non-Corporate Email Address                                   | 1.94s |
+| Emailing of attachments from Corporate Email Address to Personal Email Address             | 0.02s |
+| Emailing of attachments from Corporate Email Address to Potential Personal Email Address   | 1.93s |
+| Emailing of attachments from Corporate Email to Own Corporate Email Address                | 0.01s |
+| Document Views                                                                             | 0.87s |
+| Application Control                                                                        | 0.03s |
+--------------------------------------------------------------------------------------------------------------------------
+Risk Dashboard Total Load Time: 11.64s
+
+
+SharePoint Dashboard
+------------------------------------------------------------------------------------------------------
+| Widget Name                                                            | Load Time |
+------------------------------------------------------------------------------------------------------
+| SharePoint File Access And Download Logs By File Name Or By Platform   | 17.70s |
+| SharePoint Activity Logs By Library Name                               | 0.04s |
+| SharePoint Anonymous Link Creation By File Name Or By User Name        | 0.20s |
+| SharePoint External File Access Logs By File Name Or By User Name      | 1.37s |
+| SharePoint File Download Logs By File Name                             | 0.02s |
+| SharePoint File Access Logs By Platform                                | 0.06s |
+| SharePoint File Download Logs By Platform                              | 0.06s |
+------------------------------------------------------------------------------------------------------
+SharePoint Dashboard Total Load Time: 19.45s
+
+
+
+===============================================================
+ Dashboard Performance - live05 - USER: gw_admin_ctc
+===============================================================
+
+Risk Summary Dashboard
+-----------------------------------------------------------------------------------------
+| Widget Name                                               | Load Time |
+-----------------------------------------------------------------------------------------
+| Internal SharePoint Events                                | 2.53s |
+| External SharePoint Events                                | 0.04s |
+| Email Activities                                          | 0.01s |
+| Data Transfer using Non-Corporate Websites                | 0.25s |
+| File Uploads to Non-Corporate File Sharing Applications   | 0.88s |
+| Storage Device Risk                                       | 0.89s |
+| Printing Incidents                                        | 0.14s |
+| Access of Documents on Local Devices                      | 0.25s |
+| Key Stroke Capture of Monitored Phrases                   | 0.02s |
+| Usage Of AI Tools                                         | 0.14s |
+| Usage of Non-Corporate Websites                           | 0.23s |
+| Usage of Non-Corporate Applications                       | 0.02s |
+-----------------------------------------------------------------------------------------
+Risk Summary Dashboard Total Load Time: 5.39s
+
+
+General Dashboard
+--------------------------------------------------------------------------------
+| Widget Name                                      | Load Time |
+--------------------------------------------------------------------------------
+| Application Transfers                            | 2.04s |
+| Printed Files                                    | 0.07s |
+| Emailing of attachments from any email address   | 0.36s |
+| Website Incidents                                | 0.23s |
+| Email Body                                       | 0.01s |
+| Website Text                                     | 0.01s |
+| Storage Transfers                                | 1.94s |
+| Keystrokes                                       | 0.01s |
+| Document Views                                   | 0.14s |
+--------------------------------------------------------------------------------
+General Dashboard Total Load Time: 4.81s
+
+
+Risk Dashboard
+--------------------------------------------------------------------------------------------------------------------------
+| Widget Name                                                                                | Load Time |
+--------------------------------------------------------------------------------------------------------------------------
+| Storage Transfer Summary                                                                   | 6.63s |
+| Keystrokes Summary                                                                         | 0.12s |
+| Use of Monitored Non-Organisational Applications                                           | 1.45s |
+| Use of Monitored Non-Organisational Websites                                               | 0.02s |
+| Use of Non-Corporate OneDrive Folders                                                      | 0.01s |
+| Uploading of files via Non-Corporate Cloud or File Sharing Application                     | 0.04s |
+| Printing files using non-corporate printers                                                | 0.03s |
+| Uploads of data to Non-Corporate Websites                                                  | 0.03s |
+| Emailing of attachments from any email address                                             | 0.15s |
+| Emailing of attachments from Corporate Email Address to Non-Corporate Email Address        | 0.04s |
+| Emailing of attachments from Non-Corporate Email Address                                   | 0.13s |
+| Emailing of attachments from Corporate Email Address to Personal Email Address             | 0.02s |
+| Emailing of attachments from Corporate Email Address to Potential Personal Email Address   | 0.18s |
+| Emailing of attachments from Corporate Email to Own Corporate Email Address                | 0.31s |
+| Document Views                                                                             | 0.05s |
+| Application Control                                                                        | 0.06s |
+--------------------------------------------------------------------------------------------------------------------------
+Risk Dashboard Total Load Time: 9.25s
+
+
+SharePoint Dashboard
+------------------------------------------------------------------------------------------------------
+| Widget Name                                                            | Load Time |
+------------------------------------------------------------------------------------------------------
+| SharePoint File Access And Download Logs By File Name Or By Platform   | 3.62s |
+| SharePoint Activity Logs By Library Name                               | 0.04s |
+| SharePoint Anonymous Link Creation By File Name Or By User Name        | 0.02s |
+| SharePoint External File Access Logs By File Name Or By User Name      | 0.02s |
+| SharePoint File Download Logs By File Name                             | 0.02s |
+| SharePoint File Access Logs By Platform                                | 0.03s |
+| SharePoint File Download Logs By Platform                              | 0.02s |
+------------------------------------------------------------------------------------------------------
+SharePoint Dashboard Total Load Time: 3.77s
+
+
+
+===============================================================
+ Dashboard Performance - live05 - USER: gw_admin_boomrang
+===============================================================
+
+Risk Summary Dashboard
+-----------------------------------------------------------------------------------------
+| Widget Name                                               | Load Time |
+-----------------------------------------------------------------------------------------
+| Internal SharePoint Events                                | 2.73s |
+| External SharePoint Events                                | 0.07s |
+| Email Activities                                          | 0.04s |
+| Data Transfer using Non-Corporate Websites                | 0.06s |
+| File Uploads to Non-Corporate File Sharing Applications   | 0.06s |
+| Storage Device Risk                                       | 0.06s |
+| Printing Incidents                                        | 0.08s |
+| Access of Documents on Local Devices                      | 0.03s |
+| Key Stroke Capture of Monitored Phrases                   | 0.03s |
+| Usage Of AI Tools                                         | 0.17s |
+| Usage of Non-Corporate Websites                           | 0.25s |
+| Usage of Non-Corporate Applications                       | 0.03s |
+-----------------------------------------------------------------------------------------
+Risk Summary Dashboard Total Load Time: 3.60s
+
+
+General Dashboard
+--------------------------------------------------------------------------------
+| Widget Name                                      | Load Time |
+--------------------------------------------------------------------------------
+| Application Transfers                            | 2.01s |
+| Printed Files                                    | 0.04s |
+| Emailing of attachments from any email address   | 0.02s |
+| Website Incidents                                | 0.37s |
+| Email Body                                       | 0.02s |
+| Website Text                                     | 0.03s |
+| Storage Transfers                                | 0.03s |
+| Keystrokes                                       | 0.02s |
+| Document Views                                   | 0.28s |
+--------------------------------------------------------------------------------
+General Dashboard Total Load Time: 2.81s
+
+
+Risk Dashboard
+--------------------------------------------------------------------------------------------------------------------------
+| Widget Name                                                                                | Load Time |
+--------------------------------------------------------------------------------------------------------------------------
+| Storage Transfer Summary                                                                   | 2.46s |
+| Keystrokes Summary                                                                         | 0.02s |
+| Use of Monitored Non-Organisational Applications                                           | 0.11s |
+| Use of Monitored Non-Organisational Websites                                               | Still Loading after 0.04s |
+| Use of Non-Corporate OneDrive Folders                                                      | Still Loading after 0.00s |
+| Uploading of files via Non-Corporate Cloud or File Sharing Application                     | Still Loading after 0.00s |
+| Printing files using non-corporate printers                                                | Still Loading after 0.00s |
+| Uploads of data to Non-Corporate Websites                                                  | Still Loading after 0.00s |
+| Emailing of attachments from any email address                                             | Still Loading after 0.00s |
+| Emailing of attachments from Corporate Email Address to Non-Corporate Email Address        | Still Loading after 0.00s |
+| Emailing of attachments from Non-Corporate Email Address                                   | Still Loading after 0.00s |
+| Emailing of attachments from Corporate Email Address to Personal Email Address             | Still Loading after 0.00s |
+| Emailing of attachments from Corporate Email Address to Potential Personal Email Address   | Still Loading after 0.00s |
+| Emailing of attachments from Corporate Email to Own Corporate Email Address                | Still Loading after 0.00s |
+| Document Views                                                                             | Still Loading after 0.00s |
+| Application Control                                                                        | Still Loading after 0.00s |
+--------------------------------------------------------------------------------------------------------------------------
+Risk Dashboard Total Load Time: 2.66s
+
+
+❌ ERROR FOR USER gw_admin_boomrang: page.click: Target page, context or browser has been closed
